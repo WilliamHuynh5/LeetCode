@@ -35,22 +35,7 @@ public:
             count++;
             
         }
-        
-//         for (auto elem : merged) {
-//             cout << count << "\n";
-            
-//             if (count < c) {
-//                 temp.push_back(elem);
-//             } 
-//             if (count == c || c == 1){
-//                 res.push_back(temp);
-//                 temp.clear();
-//                 temp.push_back(elem);
-//                 count = 0;
-//                 continue;
-//             }
-//             count++;
-//         }
+
         if (c != 1) { 
             res.push_back(temp);
         }
