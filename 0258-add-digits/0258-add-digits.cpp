@@ -1,22 +1,20 @@
 class Solution {
 public:
     int addDigits(int num) {
-        
         auto res = 0;
-        
         vector<int> vec = intToVec(num);
         
         while (vec.size() > 1) {
-            res = getVecSum(vec);
+            res = accumulate(vec.begin(), vec.end(), 0);
             vec = intToVec(res);
         }
-        res = getVecSum(vec);
+        
+        res = accumulate(vec.begin(), vec.end(), 0);
         return res;
     }
     
-    
     int vecToInt(vector<int> vec) {
-        int res = 0;
+        auto res = 0;
         for (auto dig : vec) {
             res = res * 10 + dig;
         }
@@ -33,7 +31,4 @@ public:
         return vec;
     }
     
-    int getVecSum(vector<int> vec) {
-        return accumulate(vec.begin(), vec.end(), 0);
-    }
 };
