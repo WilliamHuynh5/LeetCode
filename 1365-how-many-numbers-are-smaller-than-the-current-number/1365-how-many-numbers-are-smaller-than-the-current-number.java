@@ -1,11 +1,7 @@
 class Solution {
     public int[] smallerNumbersThanCurrent(int[] nums) {
         int[] sorted = new int[nums.length];
-        int j = 0;
-        for (int elem : nums) {
-            sorted[j] = elem;
-            j++;
-        }
+        System.arraycopy(nums, 0, sorted, 0, nums.length);
         int[] res = new int[nums.length];
         Arrays.sort(sorted);
         int i = 0;
