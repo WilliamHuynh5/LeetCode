@@ -13,7 +13,7 @@ public:
                 }
                 res.push_back(i);
                 res.push_back(f - nums.begin());
-                return res;
+                break;
             }
             res.clear();
         }
