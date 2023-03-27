@@ -1,18 +1,15 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
+        auto left = 1;
         
-        int curr = nums.at(0);
-        auto it = nums.begin();
-        while (it != nums.end() - 1) {
-            auto temp = it;
-            temp++;
-            if (*it == *temp) {
-                nums.erase(temp, temp + 1);
-            } else {
-                it++;
+        for (auto right = 1; right < nums.size(); right++) {
+            if (nums[right] != nums[right - 1]) {
+                nums[left] = nums[right];
+                left++;
             }
         }
-        return nums.size();
+        
+        return left;
     }
 };
