@@ -25,21 +25,6 @@ public:
             }
         } 
         
-        auto iter = max - k;
-        if (max < k) {
-            iter = -1;
-        }
-        cout << max << "\n";
-        cout << iter << "\n";
-        
-        for (auto elem : bucket) {
-            for (auto e : elem) {
-                cout << e << " ";
-            }
-            cout << "\n";
-        }
-        //cout << "\n";
-        
         vector<int> res;
         
         while (res.size() != k) {
@@ -47,12 +32,6 @@ public:
             max--;
         }
         
-        // for (auto i = max; i > 0; i--) {
-        //     res.insert(res.end(), bucket[i].begin(), bucket[i].end());
-        //     if (res.size() == k) {
-        //         break;
-        //     }
-        // }
         return res;
     }
 };
