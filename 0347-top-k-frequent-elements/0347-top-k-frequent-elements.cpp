@@ -4,11 +4,7 @@ public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         map<int, int> freq;
         for (auto elem : nums) {
-            if (freq.find(elem) != freq.end()) {
-                freq[elem]++;
-            } else {
-                freq[elem] = 1;
-            }
+            freq[elem]++;
         }
         
         vector<int> bucket[nums.size() + 1];
