@@ -5,7 +5,6 @@ public:
         
         for (auto i = 0; i < operations.size(); i++) {
             auto op = operations[i];
-            cout << op << "\n";
             if (op == "+") {
                 auto score = stack.back() + stack[stack.size() - 2];
                 stack.push_back(score);
