@@ -17,9 +17,7 @@ public:
         for (auto pair : m) {
             if (prev + 1 == pair.first) {
                 current++;
-                if (current > longest) {
-                    longest = current;
-                }
+                longest = max(current, longest);
             } else {
                 current = 1;
             }
