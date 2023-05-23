@@ -1,29 +1,26 @@
 class Solution {
 public:
     int maxArea(vector<int>& height) {
+        auto lp = 0;
+        auto rp = height.size() - 1;
+        auto curr_max = 0;
         
-        auto start = height.begin();
-        auto end = height.end();
-        end--;
-        vector<int> res;
-        auto currHigh = -1;
-        
-        while (start != height.end() && end >= height.begin()) {
+        while (lp < rp) {
             
-            auto height = (*start < *end) ? *start : *end;
-            auto length = distance(start, end);
-
-            if (height * length > currHigh) {
-                currHigh = height * length;
+            auto area = min(height[lp], height[rp]) * (rp - lp);
+            
+            if (area > curr_max) {
+                curr_max = area;
             }
             
-            if (*start < *end) {
-                start++;
-            } else{
-                end--;
+            if (height[lp] < height[rp]) {
+                lp++;
+            } else {
+                rp--;
             }
         }
-        return currHigh;
+        
+        return curr_max;
     }
     
 };
