@@ -2,7 +2,7 @@ class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         
-        stack<string> stk;
+        stack<int> stk;
         
         for (auto token : tokens) {
             
@@ -10,30 +10,30 @@ public:
             if (token == "+" || token == "-" || token == "*" || token == "/") {
                 
                 // Pop two elements from the stack
-                auto val2 = stoi(stk.top());
+                auto val2 = stk.top();
                 stk.pop();
-                auto val1 = stoi(stk.top());
+                auto val1 = stk.top();
                 stk.pop();
                 
                 // Do the calculations, and push result back to stack
                 if (token == "+") {
-                    stk.push(to_string(val1 + val2));
+                    stk.push(val1 + val2);
                 }
                 if (token == "-") {
-                    stk.push(to_string(val1 - val2));
+                    stk.push((val1 - val2));
                 }
                 if (token == "*") {
-                    stk.push(to_string(val1 * val2));
+                    stk.push(val1 * val2);
                 }
                 if (token == "/") {
-                    stk.push(to_string(val1 / val2));
+                    stk.push(val1 / val2);
                 }
             } else {
-                stk.push(token);
+                stk.push(stoi(token));
             }
         }
 
         // Top most value of the stack will be the result
-        return stoi(stk.top());
+        return stk.top();
     }
 };
