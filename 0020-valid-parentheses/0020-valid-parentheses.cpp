@@ -10,7 +10,7 @@ public:
         
         for (auto ch : s) {
             // If it's an opening bracket
-            if (m.count(ch)) {
+            if (ch == '(' || ch == '[' || ch == '{') {
                 stk.push(ch);
             } else {
                 if (!stk.empty() && m[stk.top()] == ch) {
