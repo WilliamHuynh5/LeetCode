@@ -2,24 +2,25 @@ class Solution {
 public:
     bool isValid(string s) {
         stack<char> stk;
+        map<char, char> m;
+        m['('] = ')';
+        m['['] = ']';
+        m['{'] = '}';
         
-        map<char, char> mp;
         
-        mp['('] = ')';
-        mp['['] = ']';
-        mp['{'] = '}';
-        
-        for (auto elem : s) {
-            if (stk.size() > 0 && elem == mp[stk.top()]) {
-                stk.pop();
+        for (auto ch : s) {
+            // If it's an opening bracket
+            if (m.count(ch)) {
+                stk.push(ch);
             } else {
-                stk.push(elem);
+                if (!stk.empty() && m[stk.top()] == ch) {
+                    stk.pop();
+                } else {
+                    return false;
+                }
             }
         }
-
-        if (stk.size() > 0) {
-            return false;
-        } 
-        return true;
+        
+        return stk.empty();
     }
 };
