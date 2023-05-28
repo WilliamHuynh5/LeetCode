@@ -9,6 +9,28 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
+        if (head == NULL) {
+            return false;
+        }
+        
+        ListNode* slow = head;
+        ListNode* fast = head;
+        
+        while (fast->next != NULL && fast->next->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+};
+
+/*
+Poor method which uses hashset
+    bool hasCycle(ListNode *head) {
         set<ListNode*> s;
         
         while (head) {
@@ -17,24 +39,6 @@ public:
             }
             head = head->next;
         }
-        return false;
-    }
-};
-
-/*
-Poor method
-    bool hasCycle(ListNode *head) {
-        map<int, vector<ListNode*>> m;
-        
-        while (head) {
-            if(m.count(head->val) && find(m[head->val].begin(), m[head->val].end(), head) != m[head->val].end()) {
-                return true;
-            } else {
-                m[head->val].push_back(head);
-            }
-            head = head->next;
-        }
-        
         return false;
     }
 */
