@@ -9,6 +9,21 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
+        set<ListNode*> s;
+        
+        while (head) {
+            if(!s.insert(head).second) {
+                return true;
+            }
+            head = head->next;
+        }
+        return false;
+    }
+};
+
+/*
+Poor method
+    bool hasCycle(ListNode *head) {
         map<int, vector<ListNode*>> m;
         
         while (head) {
@@ -22,4 +37,4 @@ public:
         
         return false;
     }
-};
+*/
