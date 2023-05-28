@@ -22,20 +22,30 @@ public:
         // Time Complexity: O(n)
         // Space Complexity: O(1)
         
+        
+        // If list is null return false
         if  (head == nullptr) {
             return false;
         }
         
+        // Initialise the slow and fast pointers
         ListNode *slow = head;
         ListNode *fast = head;
         
+        // If there is a cycle, this while loop 
+        // will continuously run
         while (fast->next && fast->next->next) {
+            // Increment the two pointers.
             slow = slow->next;
             fast = fast->next->next;
+            
+            // If there is an intersection, return true
             if (slow == fast) {
                 return true;
             }
         }
+        // If there is no cycle, the loop will
+        // eventually terminate and hence return false.
         return false;
     }
 };
