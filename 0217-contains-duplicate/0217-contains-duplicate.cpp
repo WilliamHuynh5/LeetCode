@@ -1,14 +1,18 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-
-        map<int, int> m;
-        
-        for (auto elem : nums) {
-            if (m.find(elem) != m.end()) {
+    // Two methods
+    // 1. use a hashmap and check if key exists O(n)
+    // 2. sort array and iterate through 0(nlogn) + O(n);
+    map<int, bool> m;
+        for (auto num : nums) {
+            // If num doesn't exist in the map
+            if (m.find(num) == m.end()) {
+                m[num] = true;
+            } 
+            // The number exists, therefore there is a duplicate!
+            else {
                 return true;
-            } else {
-                m[elem] = 1;
             }
         }
         return false;
