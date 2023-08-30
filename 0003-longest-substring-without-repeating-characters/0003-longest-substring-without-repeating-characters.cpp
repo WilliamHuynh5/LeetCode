@@ -8,10 +8,8 @@ public:
         int res = 0;
         while (i < s.size()) {
             char ch = s[i];
-            cout << ch << "\n";
             // If hasn't been seen
             if (seen.find(ch) == seen.end()) {
-                cout << "bye\n";
                 seen.insert(ch);
                 substring.push_back(ch);
                 i++;
