@@ -1,32 +1,35 @@
 class Solution {
 public:
+    
     int lengthOfLongestSubstring(string s) {
-        vector<char> seen;
-        vector<int> sizes;
-        
-        if (s.size() == 1) {
-            return 1;
-        }
-        
-        
-        for (auto i = 0; i < s.size(); i++) {
-            if (seen.size() == 0) {
-                seen.push_back(s[i]);
+        unordered_set<char> seen;
+        vector<char> substring;
+        int i = 0;
+        int res = 0;
+        while (i < s.size()) {
+            char ch = s[i];
+            cout << ch << "\n";
+            // If hasn't been seen
+            if (seen.find(ch) == seen.end()) {
+                cout << "bye\n";
+                seen.insert(ch);
+                substring.push_back(ch);
+                i++;
+            } else {
+                res = std::max(res, static_cast<int>(substring.size()));
+                // Remove all characters before and including the seen character
+                while (!substring.empty() && substring.front() != ch) {
+                    seen.erase(substring.front());
+                    substring.erase(substring.begin());
+                }
+                if (!substring.empty()) {
+                    seen.erase(substring.front());
+                    substring.erase(substring.begin());
+                }
             }
-            
-            for (auto j = i + 1; j < s.size(); j++) {
-                if (count(seen.begin(), seen.end(), s[j])) {
-                    sizes.push_back(seen.size());
-                    seen.clear();
-                    break;
-                }    
-                seen.push_back(s[j]);
-            }
-            
-        }
-
-        sizes.push_back(seen.size());
-        sort(sizes.begin(), sizes.end(), greater<int>());
-        return sizes.at(0);
+        } 
+        res = std::max(res, static_cast<int>(substring.size()));
+        return res;
     }
 };
+                
