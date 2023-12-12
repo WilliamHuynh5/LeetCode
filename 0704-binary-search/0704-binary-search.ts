@@ -5,7 +5,7 @@ function search(nums: number[], target: number): number {
             return -1;
         }
         
-        const mid = Math.floor((lo + hi) / 2);
+        const mid: number = Math.floor((lo + hi) / 2);
         if (target > nums[mid]) {
             return bs(mid + 1, hi);
         } else if (target < nums[mid]) {
