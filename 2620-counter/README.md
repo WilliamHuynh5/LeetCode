@@ -27,6 +27,7 @@ n = -2
 
 <ul>
 	<li><code>-1000<sup>&nbsp;</sup>&lt;= n &lt;= 1000</code></li>
-	<li><code>At most 1000 calls to counter() will be made</code></li>
+	<li><code>0 &lt;= calls.length &lt;= 1000</code></li>
+	<li><code>calls[i] === "call"</code></li>
 </ul>
 </div>
